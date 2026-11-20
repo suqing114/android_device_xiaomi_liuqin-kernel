@@ -14,7 +14,7 @@ HEADERS_TARBALL := $(CURDIR)/../kernel-uapi-headers.tar.gz
 .PHONY: headers_install kernelversion
 headers_install:
 	@mkdir -p $(O)
-	@tar -xzf $(HEADERS_TARBALL) -C $(O)
+	@gzip -d < $(HEADERS_TARBALL) | tar -x -C $(O)
 
 kernelversion:
 	@echo $(VERSION).$(PATCHLEVEL).$(SUBLEVEL)
